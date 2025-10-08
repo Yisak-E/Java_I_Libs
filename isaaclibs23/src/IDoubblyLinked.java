@@ -19,6 +19,7 @@ public class IDoubblyLinked<K> extends IAbstractIList<K> {
         }else{
             Node<K> temp = new Node<>(k);
             tail.next = temp;
+            temp.prev = tail;
             tail = temp;
         }
         size++;
@@ -136,11 +137,26 @@ public class IDoubblyLinked<K> extends IAbstractIList<K> {
         return toRemove;
     }
 
+    /**
+     *  tail =tail.prev;
+     *         if(tail != null){
+     *             tail.next = null;
+     *         }
+     *         if(tail == null){
+     *             head = null;
+     *         }
+     */
     public K removeLast() {
+
+        if(tail == null) return null;
         K toRemove = tail.element;
-        Node<K> newTail = tail.prev;
-        newTail.next = null;
-        tail = newTail;
+        if(head == tail){
+            tail = head = null;
+        }else{
+            tail = tail.prev;
+            tail.next = null;
+        }
+
         size--;
         return toRemove;
     }
