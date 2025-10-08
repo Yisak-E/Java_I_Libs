@@ -29,6 +29,20 @@ public class SingleDemo {
         kidyGameScore.addLast(106);
         System.out.println(kidyGameScore.toString());
 
+        System.out.println("Remove last element"+ kidyGameScore.removeLast());
+        System.out.println("Removing the first element"+ kidyGameScore.removeFirst());
+        System.out.println("Removing the 2nd element"+ kidyGameScore.remove(1));
+        System.out.println(kidyGameScore.toString());
+
+        Integer num = (93);
+        System.out.println("removing 93: " +kidyGameScore.remove(num));
+        System.out.println(kidyGameScore.toString());
+
+
+        System.out.println("Get index 4: "+ kidyGameScore.get(4));
+
+        System.out.println("Set the 3 element to 100: " + kidyGameScore.set(2, 100));
+        System.out.println(kidyGameScore.toString());
 
     }
 }

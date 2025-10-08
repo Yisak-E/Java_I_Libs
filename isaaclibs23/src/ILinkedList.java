@@ -87,23 +87,96 @@ public class ILinkedList<K> extends IAbstractIList<K> {
         }
     }
 
+    public K removeFirst() {
+        if(head == null) return null;
+        K element = head.element;
+        head = head.next;
+        size--;
+
+        if(head == null){
+            tail = null;
+        }
+        return element;
+
+    }
+
+    /** the size-1 should be removed size-2-1+1 ,
+     *  but we have to access items before it
+     *  */
+    public K removeLast() {
+        if(isEmpty()) return null;
+        K element = tail.element;
+        if(tail == head) {
+            tail = null;
+            head = null;
+            size = 0;
+        }else{
+            Node<K> current = head;
+            for(int i = 1; i < size-1; i++){
+                current = current.next;
+            }
+            current.next = null;
+            tail = current;
+            size--;
+        }
+        return element;
+    }
+
     @Override
     public K get(int index) {
-        return null;
+        checkIndex(index);
+        Node<K> current = head;
+        for(int i = 0; i < index; i++){
+            current = current.next;
+        }
+        return current.element;
     }
 
     @Override
     public K set(int index, K element) {
-        return null;
+        checkIndex(index);
+        Node<K> current = head;
+        for(int i = 0; i < index; i++){
+            current = current.next;
+        }
+        K oldElement = current.element;
+        current.element = element;
+        return oldElement;
     }
 
     @Override
     public K remove(int index) {
-        return null;
+        checkIndex(index);
+
+        if(index == 0) return removeFirst();
+        else if(index == size-1) return removeLast();
+        else{
+            Node<K> previous = head;
+            for(int i = 1; i < index; i++){
+                previous = previous.next;
+
+            }
+            Node<K> current = previous.next;
+            previous.next = current.next;
+            size--;
+            return current.element;
+        }
     }
 
     @Override
     public boolean remove(K element) {
+        Node<K> previous = head;
+        Node<K> current = head;
+        while(current != null){
+            if(current.element.equals(element)){
+                previous.next = current.next;
+                size--;
+                return true;
+            }else{
+                previous = current;
+            }
+            current = current.next;
+        }
         return false;
     }
 
@@ -136,34 +209,6 @@ public class ILinkedList<K> extends IAbstractIList<K> {
     public int size(){
         return size;
     }
-
-
-//    @Override
-//    public Iterator<K> iterator() {
-//        return new ILinkedListIterator();
-//    }
-
-//    public class ILinkedListIterator implements Iterator<K> {
-//        private Node<K> current = head;
-//
-//
-//        @Override
-//        public boolean hasNext() {
-//            return head.next != null;
-//        }
-//
-//        @Override
-//        public K next() {
-//            K k = current.next.element;
-//            current = current.next;
-//            return k;
-//        }
-//        @Override
-//        public void remove() {
-//            ILinkedListIterator.this.remove();
-//        }
-//    }
-
 
     @Override /** Override iterator() defined in Iterable */
     public Iterator<K> iterator() {
