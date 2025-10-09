@@ -108,8 +108,7 @@ public class IDoubblyLinked<K> extends IAbstractIList<K> {
     @Override
     public K remove(int index) {
         checkIndex(index);
-        if(index == 0) return null;
-        if(index ==1) return removeFirst();
+        if(index == 0) return removeFirst();
         if(index == size-1) return removeLast();
         Node<K> current = head;
         for (int i = 0; i < index; i++) {
