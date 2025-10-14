@@ -1,4 +1,4 @@
-/*
+package builder;/*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -134,7 +134,7 @@ abstract class Builder
  class Director
 {
 
-	// Builder uses a complex series of steps
+	// builder.Builder uses a complex series of steps
 
 	public final void Construct(Builder builder)
 	{
@@ -165,7 +165,7 @@ abstract class Builder
 	public final void Show()
 	{
 
-		System.out.println("\nProduct Parts -------");
+		System.out.println("\nbuilder.Product Parts -------");
 
 		for (String part : _parts)
 
