@@ -26,7 +26,7 @@ public class Builder_Pattern {
 
 
 
-		// Construct two products
+		// getPizza two products
 
 		director.Construct(b1);
 
@@ -150,7 +150,6 @@ abstract class Builder
 {
 
 	private java.util.ArrayList<String> _parts = new java.util.ArrayList<String>();
-
 
 
 	public final void Add(String part)
