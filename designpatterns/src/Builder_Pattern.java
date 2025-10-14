@@ -4,8 +4,6 @@
  * and open the template in the editor.
  */
 
-package builder_pattern;
-
 /**
  *
  * @author Mohammed

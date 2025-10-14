@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package prototype_pattern;
+package proto;
 
 
 public class Prototype_Pattern {
