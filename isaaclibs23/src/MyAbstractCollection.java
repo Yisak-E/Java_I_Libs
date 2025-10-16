@@ -15,7 +15,7 @@ abstract class MyAbstractCollection<K> implements MyCollection<K>{
     public abstract boolean contains(K element);
 
     public abstract  Object[] toArray(K[] collection);
-    public abstract void add(K element);
+    public abstract boolean add(K element);
     public abstract boolean remove(K element);
     public abstract boolean containsAll(MyCollection<?> c);
     public abstract boolean addAll(MyCollection<? extends K> collection);

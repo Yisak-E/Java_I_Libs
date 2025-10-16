@@ -14,8 +14,9 @@ abstract class MyAbstractList<K> extends MyAbstractCollection<K> implements MyLi
     public abstract MyListIterator<K> listIterator(int index);
     public abstract MyList<K> subList(int fromIndex, int toIndex);
 
-    public void add(K element){
+    public boolean add(K element){
         add(size, element);
+        return false;
     }
 
     public boolean remove(K element){

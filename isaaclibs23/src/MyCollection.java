@@ -1,7 +1,7 @@
 public interface MyCollection<K> {
     int size();
     boolean isEmpty();
-    void add(K k);
+    boolean add(K k);
     boolean remove(K k);
     boolean contains(K k);
     void clear();
