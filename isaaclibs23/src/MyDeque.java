@@ -1,69 +1,45 @@
 import java.util.NoSuchElementException;
 
+/**
+ * A linear collection that supports element insertion and removal at both ends.
+ * This interface defines methods to access the elements at both ends of a deque.
+ *
+ * @param <K> the type of elements held in this deque.
+ */
 public interface MyDeque<K> {
-    /**
-     * Inserts the specified element at the front of this deque
-     * @throws IllegalStateException if the element cannot be added at this time due to capacity restrictions
-     */
-    void addFirst(K element);
+    /** Inserts the specified element at the front of this deque. */
+    void addFirst(K element) throws IllegalStateException;
 
-    /**
-     * Inserts the specified element at the end of this deque
-     * @throws IllegalStateException if the element cannot be added at this time due to capacity restrictions
-     */
-    void addLast(K element);
+    /** Inserts the specified element at the end of this deque. */
+    void addLast(K element) throws IllegalStateException;
 
-    /**
-     * Inserts the specified element at the front of this deque unless it would violate capacity restrictions
-     */
+    /** Inserts the specified element at the front of this deque. */
     boolean offerFirst(K element);
 
-    /**
-     * Inserts the specified element at the end of this deque unless it would violate capacity restrictions
-     */
+    /** Inserts the specified element at the end of this deque. */
     boolean offerLast(K element);
 
-    /**
-     * Retrieves and removes the first element of this deque
-     * @throws NoSuchElementException if this deque is empty
-     */
-    K removeFirst();
+    /** Retrieves and removes the first element of this deque. */
+    K removeFirst() throws NoSuchElementException;
 
-    /**
-     * Retrieves and removes the last element of this deque
-     * @throws NoSuchElementException if this deque is empty
-     */
-    K removeLast();
+    /** Retrieves and removes the last element of this deque. */
+    K removeLast() throws NoSuchElementException;
 
-    /**
-     * Retrieves and removes the first element of this deque, or returns null if this deque is empty
-     */
+    /** Retrieves and removes the first element of this deque, or returns null if this deque is empty. */
     K pollFirst();
 
-    /**
-     * Retrieves and removes the last element of this deque, or returns null if this deque is empty
-     */
+    /** Retrieves and removes the last element of this deque, or returns null if this deque is empty. */
     K pollLast();
 
-    /**
-     * Retrieves, but does not remove, the first element of this deque
-     * @throws NoSuchElementException if this deque is empty
-     */
-    K getFirst();
+    /** Retrieves, but does not remove, the first element of this deque. */
+    K getFirst() throws NoSuchElementException;
 
-    /**
-     * Retrieves, but does not remove, the last element of this deque
-     * @throws NoSuchElementException if this deque is empty
-     */
-    K getLast();
+    /** Retrieves, but does not remove, the last element of this deque. */
+    K getLast() throws NoSuchElementException;
 
-    /**
-     * Retrieves, but does not remove, the first element of this deque, or returns null if this deque is empty
-     */
+    /** Retrieves, but does not remove, the first element of this deque, or returns null if this deque is empty. */
     K peekFirst();
 
-    /**
-     * Retrieves, but does not remove, the last element of this deque, or returns null if this deque is empty
-     */
+    /** Retrieves, but does not remove, the last element of this deque, or returns null if this deque is empty. */
     K peekLast();
 }

@@ -8,12 +8,11 @@ public class TestArrayList {
         nums.add(0);
         nums.add(0);
 
-        MyArrayList<Integer> nums2 = nums.clone();
         System.out.println(nums.toString());
 
         System.out.println("after reserving order");
-        nonZeroToRightReserveOrder(nums2);
-        System.out.println(nums2.toString());
+        nonZeroToRightReserveOrder(nums);
+        System.out.println(nums.toString());
     }
 
     public static void nonZeroToRightReserveOrder(MyArrayList <Integer> lists){
