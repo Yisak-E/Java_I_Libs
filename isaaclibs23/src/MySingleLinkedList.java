@@ -44,9 +44,21 @@ public class MySingleLinkedList<K> extends MyAbstractList<K>  implements MyDeque
             for(int i = 0; i < index; i++)
                 current = current.next;
             Node<K> newNode = new Node(element);
-            current.next = newNode;
+            newNode.next = current.next;
+           current.next = newNode;
+            System.out.println("new Node: " + newNode.data);
+            size++;
         }
 
+    }
+    public boolean add(K element) {
+        if(size == 0) {
+            addFirst(element);
+        }
+        else {
+            addLast(element);
+        }
+        return true;
     }
 
     @Override
@@ -103,29 +115,32 @@ public class MySingleLinkedList<K> extends MyAbstractList<K>  implements MyDeque
         return head == null;
     }
     public int size() {
-        return 0;
+        return size;
     }
 
     @Override
     public void addFirst(Object element) throws IllegalStateException {
-        Node<K> newNode = new Node(element);
         if(head == null){
+            head = tail = new Node(element);
+        }
+        else {
+            Node newNode = new Node(element);
+            newNode.next = head;
             head = newNode;
-            tail = newNode;
         }
-        else{
-
-        }
-
-
+        size++;
     }
 
 
     public void addLast(Object element) throws IllegalStateException {
-        if(head == null){
-            head = new Node(element);
-        }
-
+       if (head == null) {
+           head = tail = new Node(element);
+           size++;
+       }
+       Node newNode = new Node(element);
+       tail.next = newNode;
+       tail = newNode;
+       size++;
     }
 
     @Override
@@ -179,7 +194,7 @@ public class MySingleLinkedList<K> extends MyAbstractList<K>  implements MyDeque
     }
 
 
-    public static class Node<K> {
+    private static class Node<K> {
         K data;
         Node<K> next;
         public Node(K data) {
