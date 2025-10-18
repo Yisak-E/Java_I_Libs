@@ -136,4 +136,6 @@ abstract class MyAbstractList<K> extends MyAbstractCollection<K> implements MyLi
 
     @Override
     public abstract Object[] toArray();
+
+    public abstract void addFirst(K element) throws IllegalStateException;
 }

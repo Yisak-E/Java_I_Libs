@@ -158,6 +158,11 @@ public class MyArrayList<K> extends MyAbstractList<K> implements MyList<K> {
         return result;
     }
 
+    @Override
+    public void addFirst(K element) throws IllegalStateException {
+
+    }
+
     /** Trims the capacity to the current size. */
     public void trimToSize() {
         if (size < elementData.length) {
