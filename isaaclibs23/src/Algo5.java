@@ -1,3 +1,7 @@
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.Stack;
+
 /**
  * Algorithm5.1: Given a queue Q, you are requested to reverse the order in Q using an additional data
  * structure object.
@@ -14,6 +18,23 @@
  */
 public class Algo5 {
     public static void main(String[] args) {
+       MyQueue<Integer> q = new MyDoubleLinked<>();
+       q.offer(1);
+       q.offer(2);
+       q.offer(3);
+       q.offer(4);
+       q.offer(5);
+       q.offer(6);
+       q.offer(7);
+
+        System.out.println(q);
+       MyDoubleLinked<Integer> st = new MyDoubleLinked<>();
+      while(q.size()-1>=0){
+           st.addFirst(q.poll());
+           System.out.println(st);
+       }
+        System.out.println("reversed number: "+ st);
+
 
     }
 }

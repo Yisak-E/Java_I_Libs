@@ -1,5 +1,3 @@
-import java.util.NoSuchElementException;
-
 /**
  * An array-based implementation of a circular queue that implements the MyQueue interface.
  * Based on the structure provided in Act5.java.
@@ -130,7 +128,9 @@ public class GenericCircularQueue<E> extends MyAbstractQueue<E> implements MyQue
         return front == -1;
     }
 
-    /** Returns the number of elements in this queue. */
+    /**
+     * Returns the number of elements in this queue.
+     */
     @Override
     public int size() {
         if (isEmpty()) return 0;

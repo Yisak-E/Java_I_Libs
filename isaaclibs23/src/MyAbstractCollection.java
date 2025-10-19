@@ -14,7 +14,9 @@ public abstract class MyAbstractCollection<K> implements MyCollection<K>{
         this.modCount = 0;
     }
 
-    /** Returns the number of elements in this collection. */
+    /**
+     * Returns the number of elements in this collection.
+     */
     @Override
     public int size(){
         return this.size;

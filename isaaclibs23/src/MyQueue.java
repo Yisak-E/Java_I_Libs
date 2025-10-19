@@ -22,4 +22,6 @@ public interface MyQueue<K> {
 
     /** Retrieves and removes the head of this queue. */
     K remove() throws NoSuchElementException;
+
+    int size();
 }

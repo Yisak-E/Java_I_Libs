@@ -1,3 +1,4 @@
+import java.util.Deque;
 import java.util.NoSuchElementException;
 
 /**
@@ -6,7 +7,7 @@ import java.util.NoSuchElementException;
  *
  * @param <K> the type of elements held in this deque.
  */
-public interface MyDeque<K> {
+public interface MyDeque<K>  extends MyQueue<K> {
     /** Inserts the specified element at the front of this deque. */
     void addFirst(K element) throws IllegalStateException;
 

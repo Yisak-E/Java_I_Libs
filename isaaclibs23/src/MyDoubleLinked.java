@@ -18,6 +18,8 @@ public class MyDoubleLinked<K> extends MyAbstractList<K> implements MyDeque<K>{
     public void add(int index, K element) {
 
     }
+
+
     public boolean add(K element) {
         if(size == 0) addFirst(element);
         else addLast(element);
@@ -65,7 +67,7 @@ public class MyDoubleLinked<K> extends MyAbstractList<K> implements MyDeque<K>{
         sb.append("[");
         Node<K> node = head;
         while (node != null) {
-            sb.append(node.data.toString());
+            sb.append(node.data);
             node = node.next;
             if (node != null) {
                 sb.append(", ");
@@ -98,6 +100,7 @@ public class MyDoubleLinked<K> extends MyAbstractList<K> implements MyDeque<K>{
             newTail.prev = tail;
             tail = newTail;
         }
+        size++;
     }
 
     @Override
@@ -121,15 +124,20 @@ public class MyDoubleLinked<K> extends MyAbstractList<K> implements MyDeque<K>{
 
     @Override
     public K removeFirst() throws NoSuchElementException {
-        if(size == 0) {
-            throw new NoSuchElementException();
+        if(size == 1) {
+            head = tail = null;
+            size = 0;
         }
-        Node<K> node = head;
-        head = node.next;
-        head.prev = null;
-        node.next = null;
-        size--;
-        return node.data;
+        else {
+            Node<K> node = head;
+            head = node.next;
+            head.prev = null;
+            node.next = null;
+            size--;
+            return node.data;
+        }
+        return null;
+
     }
 
     @Override
@@ -177,6 +185,41 @@ public class MyDoubleLinked<K> extends MyAbstractList<K> implements MyDeque<K>{
     @Override
     public K peekLast() {
         return null;
+    }
+
+    @Override
+    public boolean offer(K element) {
+        return add(element);
+    }
+
+    @Override
+    public K poll() {
+        return removeFirst();
+    }
+
+    @Override
+    public K peek() {
+        return removeLast();
+    }
+
+    @Override
+    public K element() throws NoSuchElementException {
+        return null;
+    }
+
+    @Override
+    public K remove() throws NoSuchElementException {
+        return null;
+    }
+
+    public Node<K> getHead() {
+        return head;
+    }
+    public Node<K> getTail() {
+        return tail;
+    }
+    public int size(){
+        return size;
     }
 
     public static class Node<K> {

@@ -166,8 +166,17 @@ public class MySingleLinkedList<K> extends MyAbstractList<K>  implements MyDeque
     }
 
     @Override
-    public Object removeLast() throws NoSuchElementException {
-        return null;
+    public K removeLast() throws NoSuchElementException {
+        if(size == 0) return null;
+        Node<K> current = head;
+        for (int i = 0; i <size()-1; i++) {
+            current = current.next;
+        }
+        Node<K> newNode = current.next;
+        tail = current;
+        tail.next = null;
+        size--;
+        return newNode.data;
     }
 
     @Override
@@ -197,6 +206,31 @@ public class MySingleLinkedList<K> extends MyAbstractList<K>  implements MyDeque
 
     @Override
     public Object peekLast() {
+        return null;
+    }
+
+    @Override
+    public boolean offer(Object element) {
+        return false;
+    }
+
+    @Override
+    public Object poll() {
+        return null;
+    }
+
+    @Override
+    public K peek() {
+        return removeLast();
+    }
+
+    @Override
+    public Object element() throws NoSuchElementException {
+        return null;
+    }
+
+    @Override
+    public Object remove() throws NoSuchElementException {
         return null;
     }
 
