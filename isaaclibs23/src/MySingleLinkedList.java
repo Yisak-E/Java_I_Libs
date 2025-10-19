@@ -134,12 +134,13 @@ public class MySingleLinkedList<K> extends MyAbstractList<K>  implements MyDeque
 
     public void addLast(Object element) throws IllegalStateException {
        if (head == null) {
-           head = tail = new Node(element);
-           size++;
+           head = tail = new Node<K>((K)element);
        }
-       Node newNode = new Node(element);
-       tail.next = newNode;
-       tail = newNode;
+       else{
+           Node<K> newNode = new Node<K>((K)element);
+           tail.next = newNode;
+           tail = newNode;
+       }
        size++;
     }
 
@@ -154,8 +155,14 @@ public class MySingleLinkedList<K> extends MyAbstractList<K>  implements MyDeque
     }
 
     @Override
-    public Object removeFirst() throws NoSuchElementException {
-        return null;
+    public K removeFirst() throws NoSuchElementException {
+        if(head == null) return null;
+        else{
+            Node<K> newNode = head;
+            head = newNode.next;
+            size--;
+            return newNode.data;
+        }
     }
 
     @Override
