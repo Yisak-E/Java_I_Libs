@@ -78,7 +78,7 @@ public class MyDoubleLinked<K> extends MyAbstractList<K> implements MyDeque<K>{
     @Override
     public void addFirst(K element) throws IllegalStateException {
         if(size == 0) {
-            head = tail = new Node(element);
+            head = tail = new Node<>(element);
         }else{
             Node<K> newHead = new Node<>(element);
             head.prev = newHead;
@@ -91,7 +91,7 @@ public class MyDoubleLinked<K> extends MyAbstractList<K> implements MyDeque<K>{
     @Override
     public void addLast(K element) throws IllegalStateException {
         if(size == 0) {
-            head = tail = new Node(element);
+            head = tail = new Node<>(element);
         }else{
             Node<K> newTail = new Node<>(element);
             tail.next = newTail;
@@ -102,7 +102,16 @@ public class MyDoubleLinked<K> extends MyAbstractList<K> implements MyDeque<K>{
 
     @Override
     public boolean offerFirst(K element) {
-        return false;
+        if(isEmpty()) {
+            head = tail = new Node<>(element);
+        }else{
+            Node<K> newHead = new Node<>(element);
+            head.prev = newHead;
+            newHead.next = head;
+            head = newHead;
+        }
+        size++;
+        return true;
     }
 
     @Override
@@ -112,12 +121,32 @@ public class MyDoubleLinked<K> extends MyAbstractList<K> implements MyDeque<K>{
 
     @Override
     public K removeFirst() throws NoSuchElementException {
-        return null;
+        if(size == 0) {
+            throw new NoSuchElementException();
+        }
+        Node<K> node = head;
+        head = node.next;
+        head.prev = null;
+        node.next = null;
+        size--;
+        return node.data;
     }
 
     @Override
     public K removeLast() throws NoSuchElementException {
-        return null;
+        if ( head == null ) return null;
+        else if (size == 1 ) {
+            K removed = head.data;
+            head = tail = null;
+            size = 0;
+            return removed;
+        }else{
+            K removed =  tail.data;
+            tail = tail.prev;
+            tail.next = null;
+            size--;
+            return removed;
+        }
     }
 
     @Override
@@ -132,12 +161,12 @@ public class MyDoubleLinked<K> extends MyAbstractList<K> implements MyDeque<K>{
 
     @Override
     public K getFirst() throws NoSuchElementException {
-        return null;
+        return head.data;
     }
 
     @Override
     public K getLast() throws NoSuchElementException {
-        return null;
+        return tail.data;
     }
 
     @Override
