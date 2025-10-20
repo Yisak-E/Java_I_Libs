@@ -7,7 +7,8 @@ import java.util.*;
  * two stacks are identical, false otherwise. The two stacks should be unchanged when the method
  * terminates.
  * Algorithm5.3: Re-do exercise 5.2 for a queue
- * Algorithm5.4: Update the third element in the queue with a new value VAL, leaving the queue
+
+ * Algorithm5.4: Update the third element in the stack with a new value VAL, leaving the queue
  * unchanged
  * Algorithm5.5: Update the third element in the queue with a new value VAL, leaving the queue
  * unchanged.?
@@ -24,6 +25,8 @@ public class Algo5 {
           switch(choice){
               case 1: reverser(); break;
               case 2: compareTwoStacks();break;
+              case 3: compareTwoQueues();break;
+              case 4: _3rdStackValue();break;
 
           }
 
@@ -32,16 +35,7 @@ public class Algo5 {
 
     }
 
-    public boolean checkStacksEquality(Stack<Integer> s1, Stack<Integer> s2){
-        Stack<Integer> bigStack = new Stack<>();
-        if(s1.size() != s2.size())
-            return false;
-        for(int i=0;i<s1.size();i++){
-            if(!s1.get(i).equals(s2.get(i)))
-                return false;
-        }
-        return true;
-    }
+
 
     public static void reverser(){
         Queue<String> q = new LinkedList<>();
@@ -150,6 +144,103 @@ public class Algo5 {
         System.out.println("Stack one: "+ s1);
        System.out.println("Stack two: "+ s2);
         dashLine(Math.max(s1.size(), s2.size())*2);
+
+    }
+
+    public static void compareTwoQueues() {
+        System.out.println("Now on please Enter Queue One elements ");
+        System.out.println("To stop enter e");
+        Queue<String> s1 = new  LinkedList<>();
+        while(true){
+            String input = scan.nextLine();
+            if(input.equalsIgnoreCase("e")){
+                break;
+            }else{
+                s1.add(input);
+            }
+        }
+        dashLine(30);
+        System.out.println(s1);
+        dashLine(30);
+        System.out.println("Now on please Enter Queue Two elements ");
+        System.out.println("To stop enter e");
+       Queue<String> s2 = new LinkedList<>();
+        while(true){
+            String input = scan.nextLine();
+            if(input.equalsIgnoreCase("e")){
+                break;
+            }
+            s2.add(input);
+        }
+
+        dashLine(30);
+        System.out.println(s2);
+        dashLine(30);
+
+        Queue<String> bigQueue = new LinkedList<>();
+
+        String message = "Stacks are  equal";
+        if(s1.size() != s2.size()){
+            System.out.println("Queues are not equal");
+        }else{
+          while(!s1.isEmpty() && !s2.isEmpty()){
+                if(!s1.peek().equals(s2.peek())){
+                    message = "Stacks are not equal";
+                }
+                bigQueue.add(s1.poll());
+                bigQueue.add(s2.poll());
+
+            }
+            s1.clear();
+            s2.clear();
+            int i = 0;
+           while(!bigQueue.isEmpty()){
+                if(i%2==0){
+                    s1.add(bigQueue.poll());
+                }else{
+                    s2.add(bigQueue.poll());
+                }
+                i++;
+            }
+        }
+        dashLine(Math.max(s1.size(), s2.size())*2);
+        System.out.println("Queue one: "+ s1);
+        System.out.println("Queue two: "+ s2);
+        dashLine(Math.max(s1.size(), s2.size())*2);
+        System.out.println(message);
+        dashLine(Math.max(s1.size(), s2.size())*2);
+    }
+
+    public static void  _3rdStackValue(){
+        System.out.println("Now on please Enter Stack elements ");
+        System.out.println("To stop enter e");
+        Stack<String> s1 = new Stack<>();
+        while(true){
+            String input = scan.nextLine();
+            if(input.equalsIgnoreCase("e")){
+                break;
+            }
+            s1.push(input);
+        }
+        dashLine(30);
+        System.out.println(s1);
+        dashLine(30);
+        System.out.print("Now enter the value that will replace the 3rd item: ");
+        String input = scan.nextLine();
+
+        Stack<String> temp = new Stack<>();
+
+        while(s1.size()>= 3){
+            temp.push(s1.pop());
+        }
+        s1.push(input);
+        temp.pop();
+        while(!temp.isEmpty()){
+            s1.push(temp.pop());
+        }
+        dashLine(s1.size()*3);
+        System.out.println(s1);
+        dashLine(s1.size()*3);
 
     }
 }
