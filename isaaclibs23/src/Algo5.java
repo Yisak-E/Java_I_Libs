@@ -27,6 +27,7 @@ public class Algo5 {
               case 2: compareTwoStacks();break;
               case 3: compareTwoQueues();break;
               case 4: _3rdStackValue();break;
+              case 5: _update3rdQueueElement();break;
 
           }
 
@@ -242,5 +243,44 @@ public class Algo5 {
         System.out.println(s1);
         dashLine(s1.size()*3);
 
+    }
+
+    public static void _update3rdQueueElement(){
+        System.out.println("Now on please Enter Queue elements ");
+        System.out.println("To stop enter e");
+        Queue<String> s1 = new LinkedList<>();
+        while(true){
+            String input = scan.nextLine();
+            if(input.equalsIgnoreCase("e")){
+                break;
+            }
+            s1.add(input);
+        }
+        dashLine(3*s1.size());
+        System.out.println(s1);
+        dashLine(3*s1.size());
+
+        System.out.print("Enter the new 3rd value: ");
+        String input = scan.nextLine();
+        Queue<String> temp = new LinkedList<>();
+        int i = 0;
+        while(!s1.isEmpty()){
+            i++;
+            if(i == 3){
+                temp.add(input);
+                s1.poll();
+            }
+
+            else
+                temp.add(s1.poll());
+        }
+
+
+        while(!temp.isEmpty()){
+            s1.offer(temp.poll());
+        }
+        dashLine(3*s1.size());
+        System.out.println(s1);
+        dashLine(3*s1.size());
     }
 }
