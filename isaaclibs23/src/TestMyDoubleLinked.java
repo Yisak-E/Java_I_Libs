@@ -5,12 +5,17 @@ public class TestMyDoubleLinked {
         myLinked.add(2);
         myLinked.add(3);
         myLinked.add(4);
+        myLinked.add(5);
+        myLinked.add(6);
+        myLinked.add(7);
+        myLinked.add(8);
+        myLinked.add(9);
 
         System.out.println(myLinked);
-        MyDoubleLinked.Node<Integer> lastNode = myLinked.tail;
-        while(lastNode != null){
-            System.out.println(lastNode.data);
-            lastNode = lastNode.prev;
-        }
+        myLinked.removeAllEvens();
+        System.out.println(myLinked);
+
+
+
     }
 }

@@ -221,6 +221,82 @@ public class MyDoubleLinked<K> extends MyAbstractList<K> implements MyDeque<K>{
     public int size(){
         return size;
     }
+    public void deleteAfterValLastOccurrence(K element){
+       Node<K> curr = tail;
+       Node<K> target = null;
+
+       while(curr != null){
+           if(curr.data.equals(element)){
+               target = curr;
+               break;
+           }
+           curr = curr.prev;
+       }
+
+       if(target == null || target.next == null){
+           return;
+       }
+       Node<K> toRemove = target.next;
+       Node<K> nextNode =  toRemove.next;
+
+       target.next = nextNode;
+       if(nextNode != null){
+           nextNode.prev = target;
+       }
+       else{
+           tail = target;
+       }
+       size--;
+    }
+
+    public void deleteBeforeValLastOccurrence(K element){
+        Node<K> curr = tail;
+        Node<K> target = null;
+        while(curr != null){
+            if(curr.data.equals(element)){
+                target = curr;
+                break;
+            }
+            curr = curr.prev;
+        }
+        if(target == null || target.prev == null){
+            return;
+        }
+        Node<K> toRemove = target.prev;
+        Node<K> prevNode =  toRemove.prev;
+        target.prev = prevNode;
+        if(prevNode != null){
+            prevNode.next = target;
+        }else{
+            head = target;
+        }
+        size--;
+    }
+
+    public void removeOdds(){
+        Node<K> curr = head;
+        while(curr != null && curr.next != null){
+            Node<K> nextOfNext = curr.next.next;
+            curr.next = nextOfNext;
+            if(nextOfNext != null){
+                nextOfNext.prev = curr;
+            }else{
+                tail = curr;
+            }
+            size--;
+            curr = nextOfNext;
+        }
+    }
+
+    public void removeAllEvens(){
+        if(head == null) return;
+        else{
+            Node<K> curr = head.next;
+            curr.prev = null;
+            head = curr;
+            removeOdds();
+        }
+    }
 
     public static class Node<K> {
         K data;
