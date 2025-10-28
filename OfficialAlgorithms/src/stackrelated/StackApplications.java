@@ -1,6 +1,7 @@
 package stackrelated;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Stack;
 
@@ -18,6 +19,7 @@ public class StackApplications {
 
     }
 
+    ///  with time complexity O(n^2)
     public static Stack<Integer> NextGreaterElement(List<Integer> list) {
         Stack<Integer> stack = new Stack<>();
         int first = 0;
@@ -39,5 +41,25 @@ public class StackApplications {
         }
         return stack;
     }
+
+    ///  with time complexity O(n)
+    public static List<Integer> NextGreaterElement2(List<Integer> list) {
+        Stack<Integer> stack = new Stack<>();
+        List<Integer> list2 = new ArrayList<>(Collections.nCopies(list.size(),-1));
+
+        for (int i = list.size() - 1; i >= 0; i--) {
+            while(!stack.isEmpty() && stack.peek() < list.get(i)){
+                stack.pop();
+            }
+            if(!stack.isEmpty()){
+                list2.set(i, stack.peek());
+            }
+            stack.push(list.get(i));
+        }
+        return list2;
+    }
+
+    //balanced parentheses checker
+//  e
 
 }
