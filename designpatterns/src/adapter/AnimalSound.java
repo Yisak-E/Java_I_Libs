@@ -20,7 +20,7 @@ class Cat{
     }
 }
 
-interface Animal{
+ interface Animal{
     public void animalSound();
 }
 
@@ -34,4 +34,6 @@ class SoundAdapter implements Animal{
         this.cat.sayMeow();
     }
 }
+
+
 
