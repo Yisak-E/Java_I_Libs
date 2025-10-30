@@ -12,9 +12,12 @@ public class UniversalSoundAdapterAnimal {
         Dog dog = new Dog("Bobie");
         SoundMakerToAnimalAdapter  dogAdapter = new SoundMakerToAnimalAdapter (dog);
 
+        Cow cow = new Cow("Lame Bora");
+        SoundMakerToAnimalAdapter  cowAdapter = new SoundMakerToAnimalAdapter (cow);
         // Client code works with ANY animal through adapter!
         makeAnimalSound(catAdapter);
         makeAnimalSound(dogAdapter);
+        makeAnimalSound(cowAdapter);
     }
 
     // Client method only knows about Animal interface
@@ -30,13 +33,27 @@ class Cat2 implements SoundMaker{
     public Cat2(String name) {
         System.out.println("This is " + name);
     }
-    public void sayMeow(){
+    public void meow(){
         System.out.println("Meow");
     }
 
     @Override
     public void makeSound() {
-        sayMeow();
+        meow();
+    }
+}
+
+class Cow implements SoundMaker{
+    public Cow(String name) {
+        System.out.println("This is " + name);
+    }
+
+    public void moo(){
+        System.out.println("Moo! Moo!");
+    }
+    @Override
+    public void makeSound() {
+        moo();
     }
 }
 
@@ -52,6 +69,21 @@ class Dog implements SoundMaker{
         bark();
     }
 }
+
+
+class Rat implements SoundMaker{
+    public Rat(String name) {
+        System.out.println("This is " + name);
+    }
+    public void squeak(){
+        System.out.println("Squeak");
+    }
+    @Override
+    public void makeSound() {
+        squeak();
+    }
+}
+
 
 
 class SoundMakerToAnimalAdapter  implements Animal{
