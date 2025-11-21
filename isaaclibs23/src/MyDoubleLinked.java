@@ -298,6 +298,18 @@ public class MyDoubleLinked<K> extends MyAbstractList<K> implements MyDeque<K>{
         }
     }
 
+    public Node<K> reverse(Node<K> node){
+        if(node == null || node.next == null) return node;
+        Node<K> newNode = reverse(node.next);
+
+        node.next.next = node;
+        node.next = null;
+        return newNode;
+    }
+
+
+
+
     public static class Node<K> {
         K data;
         Node<K> next;

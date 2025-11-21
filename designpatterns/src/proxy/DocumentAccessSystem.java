@@ -6,7 +6,7 @@ public class DocumentAccessSystem {
         Document proxyUser = new SecureDocumentProxy("secret_plan.pdf", "unknown");
         proxyUser.displayContent();
 
-        Document proxyUser2 = new SecureDocumentProxy("secret_plan2.pdf", "President Thomson");
+        Document proxyUser2 = new SecureDocumentProxy("secret_plan.pdf", "President Thomson");
         proxyUser2.displayContent();
     }
 }
